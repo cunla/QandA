@@ -1,0 +1,30 @@
+<ion-view title="Latest Questions">
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-back-button hideOnStateChange-back-button="true">
+    </ion-nav-back-button>
+    <ion-nav-buttons side="right">
+      <a class="button button-clear button-diary" ng-href="#/add">
+        <i class="icon ion-plus"></i>
+      </a>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content class="has-footer">
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="refresh()"
+      refreshing-text="Refreshing!"
+      refreshing-icon="ion-loading-c">
+    </ion-refresher>
+    <ion-list class="list">
+      <ion-item
+        ng-href="#/question/{{item.id}}"
+        ng-repeat="item in questions | orderBy: '-createdTime'">
+        <h3>{{item.title}}
+          <small class="positive">(by: {{item.authorName}})</small>
+        </h3>
+        <p>{{item.createdTime | date: 'yyyy-MM-dd HH:mm'}}</p>
+        <span class="badge badge-assertive">{{item.numberOfAnswers}}</span>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

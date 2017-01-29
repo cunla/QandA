@@ -1,0 +1,30 @@
+<ion-view title="Add new question">
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-back-button hideOnStateChange-back-button="true">
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="has-footer">
+
+    <div class="card list">
+      <ion-item class="item item-divider">
+        New question form
+      </ion-item>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Author</span>
+        <input type="text" ng-model="question.author" placeholder="Author">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Question title</span>
+        <input type="text" ng-model="question.title" placeholder="Question title">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Question body</span>
+        <input type="text" ng-model="question.body" placeholder="Question body">
+      </label>
+      <button class="button button-full" ng-click="postNewQuestion()">
+        Submit
+      </button>
+
+    </div>
+  </ion-content>
+</ion-view>

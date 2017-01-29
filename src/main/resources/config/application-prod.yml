@@ -1,0 +1,77 @@
+server:
+    port: 80
+    contextPath: /boiler # if you are changing this, change services.js as well!
+#logging:
+#    level.org:
+#        hibernate: error
+#        hibernate.SQL: debug
+#        hibernate.type: trace
+
+spring:
+    profiles:
+        active: prod
+
+    datasource:
+        dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+        url: jdbc:mysql://localhost:3306/fapp?useUnicode=yes&characterEncoding=UTF-8
+        validationQuery: SELECT 1
+        testWhileIdle: true
+        databaseName:
+        serverName:
+        username: fapp
+        password: fapp
+        useServerPrepStmts: true
+
+    auditing:
+        dataSourceClassName: com.mysql.jdbc.jdbc2.optional.MysqlDataSource
+        url: jdbc:mysql://localhost:3306/calcounter?useUnicode=yes&characterEncoding=UTF-8
+        validationQuery: SELECT 1
+        testWhileIdle: true
+        databaseName:
+        serverName:
+        username: calapp
+        password: calapp
+        useServerPrepStmts: true
+
+    jpa:
+        database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+        database: MYSQL
+        openInView: false
+#        show_sql: true
+        generate-ddl: true
+        hibernate:
+            ddl-auto: update
+            naming-strategy: org.hibernate.cfg.EJB3NamingStrategy
+        properties:
+             hibernate.cache.use_second_level_cache: false
+             hibernate.cache.use_query_cache: false
+             hibernate.generate_statistics: false
+             hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+             hibernate.enable_lazy_load_no_trans: true
+
+    mail:
+        baseUrl: http://localhost:80
+
+#    thymeleaf:
+#        mode: XHTML
+#        cache: false
+#        viewNames: error
+
+#metrics:
+#    jmx.enabled: false
+#    graphite:
+#        enabled: false
+#        host: localhost
+#        port: 2003
+#        prefix: fapp
+
+#cache:
+#    timeToLiveSeconds: 3600
+#    ehcache:
+#        maxBytesLocalHeap: 16M
+
+
+boiler:
+  admin:
+    login: admin@system
+    password: 123

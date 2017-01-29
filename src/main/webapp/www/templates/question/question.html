@@ -1,0 +1,48 @@
+<ion-view title="Question {{question.id}}">
+  <ion-nav-bar class="bar-dark">
+    <ion-nav-back-button hideOnStateChange-back-button="true">
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="has-footer">
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="refresh()"
+      refreshing-text="Refreshing!"
+      refreshing-icon="ion-loading-c">
+    </ion-refresher>
+    <ion-list class="list">
+      <ion-item class="item item-dark">
+        <h3>{{question.title}}
+          <small class="positive">(by: {{question.authorName}})</small>
+        </h3>
+        <p class="positive">{{question.createdTime | date: 'yyyy-MM-dd HH:mm'}}</p>
+        <p>{{question.body}}</p>
+        <span class="badge badge-assertive">{{question.numberOfAnswers}}</span>
+      </ion-item>
+      <ion-item ng-repeat="item in question.answers | orderBy: 'createdTime'">
+        <h3>{{item.body}}
+          <small class="positive">(by: {{item.authorName}})</small>
+        </h3>
+        <p>{{item.createdTime | date: 'yyyy-MM-dd HH:mm'}}</p>
+      </ion-item>
+
+    </ion-list>
+    <div class="card list">
+      <ion-item class="item item-divider">
+        New answer form
+      </ion-item>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Author</span>
+        <input type="text" ng-model="newAnswer.author" placeholder="Author">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Answer body</span>
+        <input type="text" ng-model="newAnswer.body" placeholder="Answer body">
+      </label>
+      <button class="button button-full" ng-click="postNewAnswer()">
+        Submit
+      </button>
+
+    </div>
+  </ion-content>
+</ion-view>
