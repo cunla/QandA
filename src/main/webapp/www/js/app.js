@@ -52,7 +52,8 @@
         .state('latest', {
           url: '/latest',
           templateUrl: 'templates/latest/latest.html',
-          controller: 'Latest'
+          controller: 'Latest',
+          cache: false
         })
         .state('add', {
           url: '/add',
